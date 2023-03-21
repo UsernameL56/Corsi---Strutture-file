@@ -15,6 +15,7 @@ namespace Corsi___Strutture_file
     {
         string file, appoggio;
         int indice;
+        string line;
         public Form1()
         {
             InitializeComponent();
@@ -25,11 +26,11 @@ namespace Corsi___Strutture_file
 
         private void Salva_Click(object sender, EventArgs e)
         {
-            
-            StreamWriter f = new StreamWriter(file, true);
-            f.WriteLine("nome: " + textBox1.Text + " ; " + "prezzo: " + textBox2.Text);
-            f.Close();
-            
+
+            StreamWriter writer = new StreamWriter(file, true);
+            writer.WriteLine("nome: " + textBox1.Text + " ; " + "prezzo: " + textBox2.Text);
+            writer.Close();
+
         }
 
         private void Svuotamento_Click(object sender, EventArgs e)
@@ -40,6 +41,16 @@ namespace Corsi___Strutture_file
 
         private void salvataggio_Click(object sender, EventArgs e)
         {
+
+            StreamReader reader = new StreamReader(file);
+            line = reader.ReadLine();
+            while (line != null)
+            {
+                listView1.Items.Add(line);
+                line = reader.ReadLine();
+            }
+            reader.Close();
+
         }
 
         private void cancellazione_Click(object sender, EventArgs e)
