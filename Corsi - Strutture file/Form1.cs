@@ -14,8 +14,17 @@ namespace Corsi___Strutture_file
 {
     public partial class Form1 : Form
     {
+        public struct prodotto
+        {
+            public string nome;
+            public float prezzo;
+            public bool presente;
+        }
         string file, appoggio;
+        int indice;
         string line;
+        public prodotto[] P;
+        int k;
         StreamReader reader = null;
         StreamWriter writer = null;
         StreamWriter writerApp = null;
@@ -24,13 +33,21 @@ namespace Corsi___Strutture_file
             InitializeComponent();
             file = @"File.csv";
             appoggio = @"FileAppoggio.csv";
+            indice = 0;
+            P = new prodotto[100];
+            k = 0;
         }
 
         private void Salva_Click(object sender, EventArgs e)
         {
-            writer = new StreamWriter(file, true);
+            P[indice].nome = textBox1.Text;
+            P[indice].prezzo = float.Parse(textBox2.Text);
+            P[indice].presente = true;
+            indice++;
+            StreamWriter writer = new StreamWriter(file, true);
             writer.WriteLine("nome: " + textBox1.Text + " ; " + "prezzo: " + textBox2.Text);
             writer.Close();
+
         }
 
         private void Svuotamento_Click(object sender, EventArgs e)
@@ -38,26 +55,41 @@ namespace Corsi___Strutture_file
             writer = new StreamWriter(file, false);
             writer.Close();
         }
-
-        private void salvataggio_Click(object sender, EventArgs e)
-        {
-            reader = new StreamReader(file);
-            line = reader.ReadLine();
-            while (line != null)
+         private void salvataggio_Click(object sender, EventArgs e)
             {
-                listView1.Clear();
-                listView1.Items.Add(line);
+                
+                StreamReader reader = new StreamReader(file);
                 line = reader.ReadLine();
+                k = 0;
+            listView1.Clear();
+            while (line != null)
+                {
+                    if (P[k].presente == true)
+                    {
+                        
+                        listView1.Items.Add(line);
+                        line = reader.ReadLine();
+                    }
+                    k++;
+                }
+                reader.Close();
+
             }
-            reader.Close();
-        }
 
         private void cancellazione_Click(object sender, EventArgs e)
         {
             writerApp = new StreamWriter(appoggio, false);
             Cancella();
             writerApp.Close();
-            Sosituzione()
+            Sosituzione();
+        }
+
+        private void cancMomentanea_Click(object sender, EventArgs e)
+        {
+            writerApp = new StreamWriter(appoggio, false);
+            CancellazioneMomentanea();
+            writerApp.Close();
+            Sosituzione();
         }
 
         private void modifica_Click(object sender, EventArgs e)
@@ -72,7 +104,6 @@ namespace Corsi___Strutture_file
         {
             reader = new StreamReader(file);
             line = reader.ReadLine();
-            
             while (line != null)
             {
                 String[] splitter = line.Split(';');
@@ -81,9 +112,31 @@ namespace Corsi___Strutture_file
                 {
                     writerApp.WriteLine(line);
                 }
-
                 line = reader.ReadLine();
-                
+            }
+            reader.Close();
+        }
+
+        public void CancellazioneMomentanea()
+        {
+            reader = new StreamReader(file);
+            line = reader.ReadLine();
+            k = 0;
+            while (line != null)
+            {
+                String[] splitter = line.Split(';');
+                String[] splitter2 = splitter[0].Split(' ');
+                if (splitter2[1] != textBox1.Text)
+                {
+                    writerApp.WriteLine(line);
+                }
+                else
+                {
+                    writerApp.WriteLine(line);
+                    P[k].presente = false;
+                }
+                k++;
+                line = reader.ReadLine();
             }
             reader.Close();
         }
@@ -118,10 +171,22 @@ namespace Corsi___Strutture_file
             listView1.Clear();
         }
 
+
+
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
     }
-    
+
 }
+
+
+
+        
+        
+
+        
+
+
+

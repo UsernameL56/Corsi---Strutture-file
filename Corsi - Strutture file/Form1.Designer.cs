@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.cancMomentanea = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -104,20 +105,20 @@
             // 
             // cancellazione
             // 
-            this.cancellazione.Location = new System.Drawing.Point(63, 306);
+            this.cancellazione.Location = new System.Drawing.Point(306, 306);
             this.cancellazione.Margin = new System.Windows.Forms.Padding(4);
             this.cancellazione.Name = "cancellazione";
-            this.cancellazione.Size = new System.Drawing.Size(113, 28);
+            this.cancellazione.Size = new System.Drawing.Size(171, 28);
             this.cancellazione.TabIndex = 6;
-            this.cancellazione.Text = "Cancellazione";
+            this.cancellazione.Text = "Cancella Definitivamente";
             this.cancellazione.UseVisualStyleBackColor = true;
             this.cancellazione.Click += new System.EventHandler(this.cancellazione_Click);
             // 
             // modifica
             // 
-            this.modifica.Location = new System.Drawing.Point(199, 310);
+            this.modifica.Location = new System.Drawing.Point(66, 351);
             this.modifica.Name = "modifica";
-            this.modifica.Size = new System.Drawing.Size(100, 23);
+            this.modifica.Size = new System.Drawing.Size(113, 28);
             this.modifica.TabIndex = 7;
             this.modifica.Text = "modifica";
             this.modifica.UseVisualStyleBackColor = true;
@@ -159,11 +160,22 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Parola modificata";
             // 
+            // cancMomentanea
+            // 
+            this.cancMomentanea.Location = new System.Drawing.Point(65, 306);
+            this.cancMomentanea.Name = "cancMomentanea";
+            this.cancMomentanea.Size = new System.Drawing.Size(234, 28);
+            this.cancMomentanea.TabIndex = 12;
+            this.cancMomentanea.Text = "Cancella Momentaneamente";
+            this.cancMomentanea.UseVisualStyleBackColor = true;
+            this.cancMomentanea.Click += new System.EventHandler(this.cancMomentanea_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.cancMomentanea);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -198,6 +210,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button cancMomentanea;
     }
 }
 
