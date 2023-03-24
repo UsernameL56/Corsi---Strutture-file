@@ -29,8 +29,8 @@ namespace Corsi___Strutture_file
         public Form1()
         {
             InitializeComponent();
-            file = @"File.csv";
-            appoggio = @"FileAppoggio.csv";
+            file = @"File1.csv";
+            appoggio = @"FileAppoggio1.csv";
         }
 
         private void Salva_Click(object sender, EventArgs e)
@@ -57,10 +57,7 @@ namespace Corsi___Strutture_file
             listView1.Clear();
             while (line != null)
             {
-                if (P.presente == true)
-                {
                     listView1.Items.Add(line);
-                }
 
                 line = reader.ReadLine();
             }
@@ -113,7 +110,7 @@ namespace Corsi___Strutture_file
 
         public void CancellazioneMomentanea()
         {
-            reader = new StreamReader(file);
+            reader = new StreamReader(file, false);
             line = reader.ReadLine();
             while (line != null)
             {
@@ -174,13 +171,3 @@ namespace Corsi___Strutture_file
     }
 
 }
-
-
-
-
-
-
-
-
-
-
