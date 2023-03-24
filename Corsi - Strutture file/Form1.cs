@@ -21,10 +21,8 @@ namespace Corsi___Strutture_file
             public bool presente;
         }
         string file, appoggio;
-        int indice;
         string line;
-        public prodotto[] P;
-        int k;
+        public prodotto P;
         StreamReader reader = null;
         StreamWriter writer = null;
         StreamWriter writerApp = null;
@@ -33,19 +31,15 @@ namespace Corsi___Strutture_file
             InitializeComponent();
             file = @"File.csv";
             appoggio = @"FileAppoggio.csv";
-            indice = 0;
-            P = new prodotto[100];
-            k = 0;
         }
 
         private void Salva_Click(object sender, EventArgs e)
         {
-            P[indice].nome = textBox1.Text;
-            P[indice].prezzo = float.Parse(textBox2.Text);
-            P[indice].presente = true;
-            indice++;
+            P.nome = textBox1.Text;
+            P.prezzo = float.Parse(textBox2.Text);
+            P.presente = true;
             StreamWriter writer = new StreamWriter(file, true);
-            writer.WriteLine("nome: " + textBox1.Text + " ; " + "prezzo: " + textBox2.Text);
+            writer.WriteLine(P.nome + ";" + P.prezzo);
             writer.Close();
 
         }
@@ -55,26 +49,24 @@ namespace Corsi___Strutture_file
             writer = new StreamWriter(file, false);
             writer.Close();
         }
-         private void salvataggio_Click(object sender, EventArgs e)
-            {
-                
-                StreamReader reader = new StreamReader(file);
-                line = reader.ReadLine();
-                k = 0;
+        private void salvataggio_Click(object sender, EventArgs e)
+        {
+
+            StreamReader reader = new StreamReader(file, false);
+            line = reader.ReadLine();
             listView1.Clear();
             while (line != null)
+            {
+                if (P.presente == true)
                 {
-                    if (P[k].presente == true)
-                    {
-                        
-                        listView1.Items.Add(line);
-                        line = reader.ReadLine();
-                    }
-                    k++;
+                    listView1.Items.Add(line);
                 }
-                reader.Close();
 
+                line = reader.ReadLine();
             }
+            reader.Close();
+
+        }
 
         private void cancellazione_Click(object sender, EventArgs e)
         {
@@ -102,16 +94,18 @@ namespace Corsi___Strutture_file
 
         public void Cancella()
         {
-            reader = new StreamReader(file);
+            reader = new StreamReader(file, false);
             line = reader.ReadLine();
             while (line != null)
             {
                 String[] splitter = line.Split(';');
-                String[] splitter2 = splitter[0].Split(' ');
-                if (splitter2[1] != textBox1.Text)
+                if (splitter[0] != textBox1.Text)
                 {
                     writerApp.WriteLine(line);
                 }
+                else
+                    P.presente = false;
+
                 line = reader.ReadLine();
             }
             reader.Close();
@@ -121,21 +115,19 @@ namespace Corsi___Strutture_file
         {
             reader = new StreamReader(file);
             line = reader.ReadLine();
-            k = 0;
             while (line != null)
             {
                 String[] splitter = line.Split(';');
-                String[] splitter2 = splitter[0].Split(' ');
-                if (splitter2[1] != textBox1.Text)
+                if (splitter[0] != textBox1.Text)
                 {
                     writerApp.WriteLine(line);
                 }
                 else
                 {
                     writerApp.WriteLine(line);
-                    P[k].presente = false;
+                    P.presente = false;
                 }
-                k++;
+
                 line = reader.ReadLine();
             }
             reader.Close();
@@ -148,18 +140,17 @@ namespace Corsi___Strutture_file
             while (line != null)
             {
                 String[] splitter = line.Split(';');
-                String[] splitter2 = splitter[0].Split(' ');
-                if (splitter2[1] != textBox1.Text)
+                if (splitter[0] != textBox1.Text)
                 {
                     writerApp.WriteLine(line);
                 }
-                else if(splitter2[1] == textBox1.Text)
+                else if (splitter[0] == textBox1.Text)
                 {
-                    writerApp.WriteLine("nome: " + textBox3.Text + " ; " + "prezzo: " + textBox2.Text);
+                    writerApp.WriteLine("nome: " + textBox3.Text + ";" + "prezzo: " + textBox2.Text);
                 }
 
                 line = reader.ReadLine();
-                
+
             }
             reader.Close();
         }
@@ -171,7 +162,10 @@ namespace Corsi___Strutture_file
             listView1.Clear();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -183,10 +177,10 @@ namespace Corsi___Strutture_file
 
 
 
-        
-        
 
-        
+
+
+
 
 
 

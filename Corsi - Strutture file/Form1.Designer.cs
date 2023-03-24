@@ -45,26 +45,23 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(63, 122);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Location = new System.Drawing.Point(47, 99);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 22);
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 0;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(301, 122);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Location = new System.Drawing.Point(226, 99);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 22);
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 1;
             // 
             // Salva
             // 
-            this.Salva.Location = new System.Drawing.Point(63, 245);
-            this.Salva.Margin = new System.Windows.Forms.Padding(4);
+            this.Salva.Location = new System.Drawing.Point(47, 199);
             this.Salva.Name = "Salva";
-            this.Salva.Size = new System.Drawing.Size(100, 28);
+            this.Salva.Size = new System.Drawing.Size(75, 23);
             this.Salva.TabIndex = 2;
             this.Salva.Text = "Salva";
             this.Salva.UseVisualStyleBackColor = true;
@@ -72,10 +69,9 @@
             // 
             // salvataggio
             // 
-            this.salvataggio.Location = new System.Drawing.Point(199, 245);
-            this.salvataggio.Margin = new System.Windows.Forms.Padding(4);
+            this.salvataggio.Location = new System.Drawing.Point(149, 199);
             this.salvataggio.Name = "salvataggio";
-            this.salvataggio.Size = new System.Drawing.Size(100, 28);
+            this.salvataggio.Size = new System.Drawing.Size(75, 23);
             this.salvataggio.TabIndex = 3;
             this.salvataggio.Text = "Salvataggio";
             this.salvataggio.UseVisualStyleBackColor = true;
@@ -83,10 +79,9 @@
             // 
             // Svuotamento
             // 
-            this.Svuotamento.Location = new System.Drawing.Point(63, 470);
-            this.Svuotamento.Margin = new System.Windows.Forms.Padding(4);
+            this.Svuotamento.Location = new System.Drawing.Point(47, 382);
             this.Svuotamento.Name = "Svuotamento";
-            this.Svuotamento.Size = new System.Drawing.Size(100, 28);
+            this.Svuotamento.Size = new System.Drawing.Size(75, 23);
             this.Svuotamento.TabIndex = 4;
             this.Svuotamento.Text = "Svuota file";
             this.Svuotamento.UseVisualStyleBackColor = true;
@@ -95,20 +90,18 @@
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(655, 63);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4);
+            this.listView1.Location = new System.Drawing.Point(491, 51);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(297, 435);
+            this.listView1.Size = new System.Drawing.Size(224, 354);
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
             // 
             // cancellazione
             // 
-            this.cancellazione.Location = new System.Drawing.Point(306, 306);
-            this.cancellazione.Margin = new System.Windows.Forms.Padding(4);
+            this.cancellazione.Location = new System.Drawing.Point(230, 249);
             this.cancellazione.Name = "cancellazione";
-            this.cancellazione.Size = new System.Drawing.Size(171, 28);
+            this.cancellazione.Size = new System.Drawing.Size(128, 23);
             this.cancellazione.TabIndex = 6;
             this.cancellazione.Text = "Cancella Definitivamente";
             this.cancellazione.UseVisualStyleBackColor = true;
@@ -116,9 +109,10 @@
             // 
             // modifica
             // 
-            this.modifica.Location = new System.Drawing.Point(66, 351);
+            this.modifica.Location = new System.Drawing.Point(50, 285);
+            this.modifica.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.modifica.Name = "modifica";
-            this.modifica.Size = new System.Drawing.Size(113, 28);
+            this.modifica.Size = new System.Drawing.Size(85, 23);
             this.modifica.TabIndex = 7;
             this.modifica.Text = "modifica";
             this.modifica.UseVisualStyleBackColor = true;
@@ -126,18 +120,18 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(63, 189);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox3.Location = new System.Drawing.Point(47, 154);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(132, 22);
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(63, 99);
+            this.label1.Location = new System.Drawing.Point(47, 80);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 16);
+            this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Input";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -145,26 +139,29 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(298, 99);
+            this.label2.Location = new System.Drawing.Point(224, 80);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 16);
+            this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Prezzo";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 169);
+            this.label3.Location = new System.Drawing.Point(47, 137);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 16);
+            this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 11;
             this.label3.Text = "Parola modificata";
             // 
             // cancMomentanea
             // 
-            this.cancMomentanea.Location = new System.Drawing.Point(65, 306);
+            this.cancMomentanea.Location = new System.Drawing.Point(49, 249);
+            this.cancMomentanea.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancMomentanea.Name = "cancMomentanea";
-            this.cancMomentanea.Size = new System.Drawing.Size(234, 28);
+            this.cancMomentanea.Size = new System.Drawing.Size(176, 23);
             this.cancMomentanea.TabIndex = 12;
             this.cancMomentanea.Text = "Cancella Momentaneamente";
             this.cancMomentanea.UseVisualStyleBackColor = true;
@@ -172,9 +169,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.cancMomentanea);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -188,9 +185,9 @@
             this.Controls.Add(this.Salva);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
