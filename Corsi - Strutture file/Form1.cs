@@ -18,50 +18,54 @@ namespace Corsi___Strutture_file
         {
             public string nome;
             public float prezzo;
-            public bool presente;
+            public string presente;
         }
-        string file, appoggio;
+        string file, appoggio, appoggioMoment;
         string line;
         public prodotto P;
         StreamReader reader = null;
         StreamWriter writer = null;
         StreamWriter writerApp = null;
+        StreamWriter writerApp1 = null;
         public Form1()
         {
             InitializeComponent();
             file = @"File1.csv";
             appoggio = @"FileAppoggio1.csv";
+            appoggioMoment = @"FileAppoggio2.csv";
         }
 
         private void Salva_Click(object sender, EventArgs e)
         {
             P.nome = textBox1.Text;
             P.prezzo = float.Parse(textBox2.Text);
-            P.presente = true;
+            P.presente = "true";
             StreamWriter writer = new StreamWriter(file, true);
-            writer.WriteLine(P.nome + ";" + P.prezzo);
+            writer.WriteLine(P.nome + ";" + P.prezzo+";"+ P.presente);
             writer.Close();
 
         }
 
         private void Svuotamento_Click(object sender, EventArgs e)
         {
-            writer = new StreamWriter(file, false);
-            writer.Close();
+            File.Delete(file);
         }
         private void salvataggio_Click(object sender, EventArgs e)
         {
-
+            
             StreamReader reader = new StreamReader(file, false);
             line = reader.ReadLine();
+            String[] splitter = line.Split(';');
             listView1.Clear();
             while (line != null)
             {
+                if (splitter[2]  == "true")
                     listView1.Items.Add(line);
 
                 line = reader.ReadLine();
             }
             reader.Close();
+            
 
         }
 
@@ -75,10 +79,9 @@ namespace Corsi___Strutture_file
 
         private void cancMomentanea_Click(object sender, EventArgs e)
         {
-            writerApp = new StreamWriter(appoggio, false);
+            writer = new StreamWriter(file, false);
             CancellazioneMomentanea();
-            writerApp.Close();
-            Sosituzione();
+            writer.Close();
         }
 
         private void modifica_Click(object sender, EventArgs e)
@@ -101,7 +104,7 @@ namespace Corsi___Strutture_file
                     writerApp.WriteLine(line);
                 }
                 else
-                    P.presente = false;
+                    P.presente = "false";
 
                 line = reader.ReadLine();
             }
@@ -110,6 +113,10 @@ namespace Corsi___Strutture_file
 
         public void CancellazioneMomentanea()
         {
+            writerApp = new StreamWriter(appoggio, false);
+            CopiaturaMoment();
+            writerApp.Close();
+
             reader = new StreamReader(file, false);
             line = reader.ReadLine();
             while (line != null)
@@ -120,14 +127,24 @@ namespace Corsi___Strutture_file
                     writerApp.WriteLine(line);
                 }
                 else
-                {
-                    writerApp.WriteLine(line);
-                    P.presente = false;
-                }
+                    P.presente = "false";
 
                 line = reader.ReadLine();
             }
             reader.Close();
+        }
+        
+        public void CopiaturaMoment()
+        {
+            reader = new StreamReader(file, false);
+            line = reader.ReadLine();
+            while (line != null)
+            {
+                writerApp.WriteLine(line);
+                line = reader.ReadLine();
+            }
+            reader.Close();
+            
         }
 
         public void Modifica()
