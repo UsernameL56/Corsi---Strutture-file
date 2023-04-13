@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Runtime.InteropServices;
 
 namespace Corsi___Strutture_file
 {
@@ -18,7 +19,6 @@ namespace Corsi___Strutture_file
         {
             public string nome;
             public float prezzo;
-            public string presente;
         }
         string file, appoggio, appoggioMoment;
         string line;
@@ -39,9 +39,8 @@ namespace Corsi___Strutture_file
         {
             P.nome = textBox1.Text;
             P.prezzo = float.Parse(textBox2.Text);
-            P.presente = "true";
             StreamWriter writer = new StreamWriter(file, true);
-            writer.WriteLine(P.nome + ";" + P.prezzo+";"+ P.presente);
+            writer.WriteLine($"{P.nome};{P.prezzo};true");
             writer.Close();
 
         }
@@ -55,14 +54,16 @@ namespace Corsi___Strutture_file
             
             StreamReader reader = new StreamReader(file, false);
             line = reader.ReadLine();
-            String[] splitter = line.Split(';');
+            
             listView1.Clear();
             while (line != null)
             {
+                String[] splitter = line.Split(';');
+                
                 if (splitter[2]  == "true")
                     listView1.Items.Add(line);
-
                 line = reader.ReadLine();
+
             }
             reader.Close();
             
@@ -79,9 +80,30 @@ namespace Corsi___Strutture_file
 
         private void cancMomentanea_Click(object sender, EventArgs e)
         {
-            writer = new StreamWriter(file, false);
             CancellazioneMomentanea();
+            Sosituzione();
+        }
+        public void CancellazioneMomentanea()
+        {
+            writer = new StreamWriter(appoggio, true);
+            reader = new StreamReader(file, false);
+            line = reader.ReadLine();
+            while (line != null)
+            {
+                String[] splitter = line.Split(';');
+                if (splitter[0] != textBox1.Text)
+                {
+                    writer.WriteLine(line);
+                }
+                else
+                {
+                    writer.WriteLine($"{textBox1.Text};{textBox2.Text};false");
+                }
+
+                line = reader.ReadLine();
+            }
             writer.Close();
+            reader.Close();
         }
 
         private void modifica_Click(object sender, EventArgs e)
@@ -94,6 +116,7 @@ namespace Corsi___Strutture_file
 
         public void Cancella()
         {
+           
             reader = new StreamReader(file, false);
             line = reader.ReadLine();
             while (line != null)
@@ -103,36 +126,15 @@ namespace Corsi___Strutture_file
                 {
                     writerApp.WriteLine(line);
                 }
-                else
-                    P.presente = "false";
+                
 
                 line = reader.ReadLine();
             }
+           
             reader.Close();
         }
 
-        public void CancellazioneMomentanea()
-        {
-            writerApp = new StreamWriter(appoggio, false);
-            CopiaturaMoment();
-            writerApp.Close();
-
-            reader = new StreamReader(file, false);
-            line = reader.ReadLine();
-            while (line != null)
-            {
-                String[] splitter = line.Split(';');
-                if (splitter[0] != textBox1.Text)
-                {
-                    writerApp.WriteLine(line);
-                }
-                else
-                    P.presente = "false";
-
-                line = reader.ReadLine();
-            }
-            reader.Close();
-        }
+       
         
         public void CopiaturaMoment()
         {
